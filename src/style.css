@@ -1,4 +1,10 @@
+body {
+    background-color: black;
+}
+
 .hello {
-    color: wheat;
+    color: red;
     background-color: darkslategrey;
+    background: url('./bige_pige.jpg');
+    height: 400px;
   }
