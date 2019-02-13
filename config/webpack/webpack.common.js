@@ -30,5 +30,10 @@ module.exports = {
         use: ["file-loader"]
       }
     ]
-  }
+  },
+  optimization: {
+         splitChunks: {
+           chunks: 'all'
+         }
+       }
 };
