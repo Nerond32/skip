@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
+const Webpack = require("webpack");
 
 module.exports = {
   entry: {
@@ -15,7 +16,7 @@ module.exports = {
       title: "Output Management"
     }),
     new CleanWebpackPlugin(["dist"]),
-    new webpack.HotModuleReplacementPlugin()
+    new Webpack.HotModuleReplacementPlugin()
   ],
   devtool: "inline-source-map",
   module: {

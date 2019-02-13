@@ -1,7 +1,10 @@
 const webpackDevServer = require("webpack-dev-server");
 const webpack = require("webpack");
+const merge = require("webpack-merge")
 
-const config = require("./webpack.common.js/index.js");
+const commonConfig = require("./webpack/webpack.common.js");
+const devConfig = require("./webpack/webpack.dev.js")
+const config = merge.smart(commonConfig, devConfig)
 const options = {
   contentBase: "./dist",
   hot: true,
