@@ -18,6 +18,10 @@ module.exports = {
     }),
     new CleanWebpackPlugin(["dist"])
   ],
+  devtool: "inline-source-map",
+  devServer: {
+    contentBase: "./dist"
+  },
   module: {
     rules: [
       {
