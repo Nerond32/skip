@@ -20,10 +20,6 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin()
   ],
   devtool: "inline-source-map",
-  devServer: {
-    contentBase: "./dist",
-    hot: true
-  },
   module: {
     rules: [
       {
