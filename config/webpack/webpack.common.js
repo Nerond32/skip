@@ -13,6 +13,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
+      template: "src/index.html",
       title: "Output Management"
     }),
     new CleanWebpackPlugin(["dist"]),
@@ -21,6 +22,16 @@ module.exports = {
   devtool: "inline-source-map",
   module: {
     rules: [
+      {
+        test: /\.m?js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env", "@babel/preset-react"]
+          }
+        }
+      },
       {
         test: /\.css$/,
         use: ["style-loader", "css-loader"]
@@ -32,8 +43,8 @@ module.exports = {
     ]
   },
   optimization: {
-         splitChunks: {
-           chunks: 'all'
-         }
-       }
+    splitChunks: {
+      chunks: "all"
+    }
+  }
 };

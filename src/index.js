@@ -1,12 +1,7 @@
-import _ from "lodash";
 import "./style.css";
+import React from "react";
+import ReactDOM from "react-dom";
 
-function component() {
-  let element = document.createElement("div");
-  element.innerHTML = "Hellouuuuuuuuuaa webpackaa";
-  element.classList.add("hello");
-  return element;
-}
+const element = <h1>Hello world!</h1>;
 
-let element = component(); // Store the element to re-render on print.js changes
-document.body.appendChild(element);
+ReactDOM.render(element, document.getElementById("root"));
