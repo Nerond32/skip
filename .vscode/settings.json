@@ -1,0 +1,9 @@
+{
+  "eslint.autoFixOnSave": true,
+  "editor.formatOnSave": true,
+  "prettier.stylelintIntegration": true,
+  "prettier.eslintIntegration": true,
+  "files.insertFinalNewline": true,
+  "files.eol": "\n",
+  "eslint.validate": ["javascript", "javascriptreact"]
+}
