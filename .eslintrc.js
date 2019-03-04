@@ -12,18 +12,5 @@ module.exports = {
     es6: true,
     node: true
   },
-  plugins: ["react", "prettier"],
-  rules: {
-    "prettier/prettier": [
-      1,
-      {
-        printWidth: 100,
-        tabWidth: 4,
-        useTabs: false,
-        semi: true,
-        singleQuote: true,
-        trailingComma: "all"
-      }
-    ]
-  }
+  plugins: ["react", "prettier"]
 };
