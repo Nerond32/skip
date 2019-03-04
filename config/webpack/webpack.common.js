@@ -5,7 +5,7 @@ const Webpack = require("webpack");
 
 module.exports = {
   entry: {
-    app: "./src/index.js"
+    app: "./src/index.jsx"
   },
   output: {
     filename: "[name].bundle.js",
@@ -20,11 +20,14 @@ module.exports = {
     new Webpack.HotModuleReplacementPlugin()
   ],
   devtool: "inline-source-map",
+  resolve: {
+    extensions: [".js", ".jsx", ".css"]
+  },
   module: {
     rules: [
       {
-        test: /\.m?js$/,
-        exclude: /(node_modules|bower_components)/,
+        test: /\.(js|jsx)?$/,
+        exclude: /(node_modules)/,
         use: {
           loader: "babel-loader",
           options: {
