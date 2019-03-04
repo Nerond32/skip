@@ -7,8 +7,9 @@ const Input = () => {
     <div>
       {Object.entries(data).map(([key, value]) => (
         <div key={key}>
-          {value.name}:
+          {value.name}: Yes
           <input name={value.name} type="radio" id="yes" value="Yes" />
+          No
           <input name={value.name} type="radio" id="no" value="No" />
         </div>
       ))}
