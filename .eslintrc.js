@@ -3,6 +3,7 @@ module.exports = {
     "eslint:recommended",
     "plugin:import/react",
     "plugin:react/recommended",
+    "jsx-a11y",
     "airbnb",
     "prettier",
     "prettier/react"
