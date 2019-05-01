@@ -18,6 +18,14 @@ class Content extends React.Component {
 
   generate() {
     let tmpScript = "";
+    Object.entries(this.state.inputs).map(([key, value]) => {
+      if (value.isChecked) {
+        tmpScript += value.code + "\n";
+      }
+    });
+    this.setState({
+      scripts: tmpScript
+    });
   }
 
   changedInputSelection(name, value) {
@@ -44,7 +52,7 @@ class Content extends React.Component {
             />
           ))}
           <GenerateButton generate={this.generate} />
-          <Output text={this.state.script} />
+          <Output text={this.state.scripts} />
         </div>
       </div>
     );
