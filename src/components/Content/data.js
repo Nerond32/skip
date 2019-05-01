@@ -1,6 +1,17 @@
 const data = {
-  darkTheme: { name: "Dark theme", isChecked: false, code: "sampleCode1" },
-  setting2: { name: "name2", isChecked: false, code: "sampleCode2" },
+  darkTheme: {
+    name: "Dark theme",
+    isChecked: false,
+    code: `Set-ItemProperty -Path HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize -Name AppsUseLightTheme -Value 0`,
+    info:
+      "Enable dark theme for Windows. Note that this setting might not work "
+  },
+  setting2: {
+    name: "name2",
+    isChecked: false,
+    code: `sampleCode2`,
+    info: "testInfo"
+  },
   installChocolatey: {
     name: "Install chocolatey",
     isChecked: false,
