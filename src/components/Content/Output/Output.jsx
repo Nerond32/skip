@@ -1,5 +1,5 @@
 import React from "react";
-import "./Output.css";
+import "./Output.less";
 
 const Output = () => {
   return (

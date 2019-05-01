@@ -1,8 +1,12 @@
 import React from "react";
 import "./GenerateButton.css";
 
-const GenerateButton = () => {
-  return <button id="generateButton">Generate script</button>;
+const GenerateButton = props => {
+  return (
+    <button id="generateButton" onClick={props.generate}>
+      Generate script
+    </button>
+  );
 };
 
 export default GenerateButton;

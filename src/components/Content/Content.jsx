@@ -1,5 +1,5 @@
 import React from "react";
-import "./Content.css";
+import "./Content.less";
 import Input from "./Input/Input";
 import Output from "./Output/Output";
 import GenerateButton from "./GenerateButton/GenerateButton";
@@ -9,7 +9,9 @@ class Content extends React.Component {
     super(props);
     this.generate = this.generate.bind(this);
   }
-  generate() {}
+  generate() {
+    console.log("SYF");
+  }
 
   render() {
     return (
@@ -17,7 +19,7 @@ class Content extends React.Component {
         <h2>Settings</h2>
         <div className="content">
           <Input />
-          <GenerateButton />
+          <GenerateButton generate={this.generate} />
           <Output />
         </div>
       </div>

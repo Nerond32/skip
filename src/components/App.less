@@ -1,7 +1,14 @@
-@color: red;
+@mainColor:#446;
+@secondaryColor:lighten(@mainColor,30%);
+@debug: true;
+
+* when(@debug) {
+  border: 2px solid green !important;
+  padding: 3px !important;
+}
 
 body {
-  background-color: @color;
+  background-color: @mainColor;
   margin:0px;
   padding:0px;
   font-family: sans-serif;

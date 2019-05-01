@@ -1,6 +1,6 @@
 import React from "react";
 import data from "./data";
-import "./Input.css";
+import "./Input.less";
 
 const Input = () => {
   console.log(data);
@@ -11,7 +11,13 @@ const Input = () => {
           {value.name}: Yes
           <input name={value.name} type="radio" id="yes" value="Yes" />
           No
-          <input name={value.name} type="radio" id="no" value="No" />
+          <input
+            name={value.name}
+            type="radio"
+            id="no"
+            value="No"
+            checked={value.isChecked}
+          />
         </div>
       ))}
     </div>
