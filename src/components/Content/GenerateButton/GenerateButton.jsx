@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "./GenerateButton.css";
 
 const GenerateButton = props => {
@@ -7,6 +8,10 @@ const GenerateButton = props => {
       Generate script
     </button>
   );
+};
+
+GenerateButton.propTypes = {
+  generate: PropTypes.func
 };
 
 export default GenerateButton;

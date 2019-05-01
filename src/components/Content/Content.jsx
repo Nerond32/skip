@@ -2,6 +2,7 @@ import React from "react";
 import "./Content.less";
 import data from "./data";
 import preScript from "./preScript";
+import postScript from "./postScript";
 import Input from "./Input/Input";
 import Output from "./Output/Output";
 import GenerateButton from "./GenerateButton/GenerateButton";
@@ -34,21 +35,25 @@ class Content extends React.Component {
 
   generate() {
     let tmpScript = preScript + "\n";
-    Object.entries(this.state.inputs).map(([key, value]) => {
+    Object.entries(this.state.inputs).map(([, value]) => {
       if (value.isChecked) {
         tmpScript += value.code + "\n";
       }
     });
+    tmpScript += postScript;
     this.setState({
       scripts: tmpScript
     });
   }
 
-  changedInputSelection(name, value) {
+  changedInputSelection(name) {
     this.setState({
       inputs: {
         ...this.state.inputs,
-        [name]: { ...this.state.inputs[name], isChecked: value }
+        [name]: {
+          ...this.state.inputs[name],
+          isChecked: !this.state.inputs[name].isChecked
+        }
       }
     });
   }
