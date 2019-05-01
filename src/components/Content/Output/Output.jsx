@@ -1,13 +1,13 @@
 import React from "react";
 import "./Output.less";
 
-const Output = () => {
+const Output = props => {
   return (
     <textarea
       id="output"
       rows="4"
       cols="50"
-      value="Test text area"
+      value={props.text}
       readOnly={true}
     />
   );

@@ -1,25 +1,19 @@
 import React from "react";
-import data from "./data";
 import "./Input.less";
 
-const Input = () => {
-  console.log(data);
+const Input = props => {
   return (
-    <div>
-      {Object.entries(data).map(([key, value]) => (
-        <div className="input" key={key}>
-          {value.name}: Yes
-          <input name={value.name} type="radio" id="yes" value="Yes" />
-          No
-          <input
-            name={value.name}
-            type="radio"
-            id="no"
-            value="No"
-            checked={value.isChecked}
-          />
-        </div>
-      ))}
+    <div className="input">
+      {props.name}: Yes
+      <input name={props.name} type="radio" id="yes" value="Yes" />
+      No
+      <input
+        name={props.name}
+        type="radio"
+        id="no"
+        value="No"
+        checked={props.isChecked}
+      />
     </div>
   );
 };
