@@ -21,7 +21,7 @@ module.exports = {
   ],
   devtool: "inline-source-map",
   resolve: {
-    extensions: [".js", ".jsx", ".css"]
+    extensions: [".js", ".jsx", ".less", ".css"]
   },
   module: {
     rules: [
@@ -38,6 +38,10 @@ module.exports = {
       {
         test: /\.css$/,
         use: ["style-loader", "css-loader"]
+      },
+      {
+        test: /\.less$/,
+        use: ["style-loader", "css-loader", "less-loader"]
       },
       {
         test: /\.(png|svg|jpg|gif)$/,

@@ -13,12 +13,13 @@ class Content extends React.Component {
 
   render() {
     return (
-      <div className="content">
+      <div>
         <h2>Settings</h2>
-        <br />
-        <Input />
-        <GenerateButton />
-        <Output />
+        <div className="content">
+          <Input />
+          <GenerateButton />
+          <Output />
+        </div>
       </div>
     );
   }

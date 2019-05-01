@@ -1,4 +1,11 @@
 .content {
     background-color:red;
     padding:20px;
+    font-size:1.2em;
+}
+
+.content > * {
+    display:block;
+    padding:16px;
+    border: 2px solid blue;
 }
