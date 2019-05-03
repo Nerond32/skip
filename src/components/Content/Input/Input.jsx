@@ -1,20 +1,28 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "./Input.less";
 
-const Input = props => {
+const Input = ({ id, name, isChecked, changedInputSelection }) => {
   return (
     <div className="input">
-      {props.name}:
+      {name}:
       <input
-        name={props.name}
+        name={name}
         type="checkbox"
         id="yes"
         value="Yes"
-        defaultChecked={props.isChecked}
-        onChange={e => props.changedInputSelection(props.id)}
+        defaultChecked={isChecked}
+        onChange={() => changedInputSelection(id)}
       />
     </div>
   );
+};
+
+Input.propTypes = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  isChecked: PropTypes.bool.isRequired,
+  changedInputSelection: PropTypes.func.isRequired
 };
 
 export default Input;

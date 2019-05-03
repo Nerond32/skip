@@ -4,7 +4,6 @@ module.exports = {
     "plugin:import/recommended",
     "plugin:import/react",
     "plugin:react/recommended",
-    "jsx-a11y",
     "airbnb",
     "prettier",
     "prettier/react"
@@ -14,5 +13,9 @@ module.exports = {
     es6: true,
     node: true
   },
-  plugins: ["react", "prettier"]
+  plugins: ["react", "prettier", "jsx-a11y"],
+  rules: {
+    "react/prop-types": 2,
+    "react/destructuring-assignment": 0
+  }
 };

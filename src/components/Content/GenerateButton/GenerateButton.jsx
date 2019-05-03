@@ -1,17 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./GenerateButton.css";
+import "./GenerateButton.less";
 
-const GenerateButton = props => {
+const GenerateButton = ({ generate }) => {
   return (
-    <button id="generateButton" onClick={props.generate}>
+    <button type="button" id="generateButton" onClick={generate}>
       Generate script
     </button>
   );
 };
 
 GenerateButton.propTypes = {
-  generate: PropTypes.func
+  generate: PropTypes.func.isRequired
 };
 
 export default GenerateButton;

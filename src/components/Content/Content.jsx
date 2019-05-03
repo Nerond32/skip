@@ -16,15 +16,15 @@ class Content extends React.Component {
     this.changedInputSelection = this.changedInputSelection.bind(this);
     this.state = {
       inputs: data,
-      scripts: preScript
+      script: preScript
     };
   }
 
   download() {
-    let element = document.createElement("a");
+    const element = document.createElement("a");
     element.setAttribute(
       "href",
-      "data:text/plain;charset=utf-8," + encodeURIComponent(this.state.scripts)
+      `data:text/plain;charset=utf-8,${encodeURIComponent(this.state.script)}`
     );
     element.setAttribute("download", "startupScript.ps1");
     element.style.display = "none";
@@ -34,27 +34,29 @@ class Content extends React.Component {
   }
 
   generate() {
-    let tmpScript = preScript + "\n";
-    Object.entries(this.state.inputs).map(([, value]) => {
-      if (value.isChecked) {
-        tmpScript += value.code + "\n";
-      }
-    });
+    const inputValues = Object.values(this.state.inputs);
+    let tmpScript = inputValues.reduce(
+      (script, { isChecked, code }) =>
+        isChecked ? `${script + code}\n` : script,
+      `${preScript}\n`
+    );
     tmpScript += postScript;
     this.setState({
-      scripts: tmpScript
+      script: tmpScript
     });
   }
 
   changedInputSelection(name) {
-    this.setState({
-      inputs: {
-        ...this.state.inputs,
-        [name]: {
-          ...this.state.inputs[name],
-          isChecked: !this.state.inputs[name].isChecked
+    this.setState(prevState => {
+      return {
+        inputs: {
+          ...prevState.inputs,
+          [name]: {
+            ...prevState.inputs[name],
+            isChecked: !prevState.inputs[name].isChecked
+          }
         }
-      }
+      };
     });
   }
 
@@ -73,7 +75,7 @@ class Content extends React.Component {
             />
           ))}
           <GenerateButton generate={this.generate} />
-          <Output text={this.state.scripts} />
+          <Output text={this.state.script} />
           <DownloadButton download={this.download} />
         </div>
       </div>
