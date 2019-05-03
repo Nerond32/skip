@@ -1,5 +1,7 @@
 import React from "react";
 import "./Content.less";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import data from "./data";
 import preScript from "./preScript";
 import postScript from "./postScript";
@@ -7,16 +9,16 @@ import Input from "./Input/Input";
 import Output from "./Output/Output";
 import GenerateButton from "./GenerateButton/GenerateButton";
 import DownloadButton from "./DownloadButton/DownloadButton";
+import { updateScript } from "../../redux/actions";
 
 class Content extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.download = this.download.bind(this);
     this.generate = this.generate.bind(this);
     this.changedInputSelection = this.changedInputSelection.bind(this);
     this.state = {
-      inputs: data,
-      script: preScript
+      inputs: data
     };
   }
 
@@ -24,7 +26,7 @@ class Content extends React.Component {
     const element = document.createElement("a");
     element.setAttribute(
       "href",
-      `data:text/plain;charset=utf-8,${encodeURIComponent(this.state.script)}`
+      `data:text/plain;charset=utf-8,${encodeURIComponent(this.props.script)}`
     );
     element.setAttribute("download", "startupScript.ps1");
     element.style.display = "none";
@@ -41,9 +43,7 @@ class Content extends React.Component {
           isChecked ? `${prevCode + code}\n` : prevCode,
         `${preScript}\n`
       ) + postScript;
-    this.setState({
-      script
-    });
+    this.props.updateScript(script);
   }
 
   changedInputSelection(name) {
@@ -75,7 +75,7 @@ class Content extends React.Component {
             />
           ))}
           <GenerateButton generate={this.generate} />
-          <Output text={this.state.script} />
+          <Output text={this.props.script} />
           <DownloadButton download={this.download} />
         </div>
       </div>
@@ -83,4 +83,24 @@ class Content extends React.Component {
   }
 }
 
-export default Content;
+Content.defaultProps = {
+  script: preScript + postScript
+};
+
+Content.propTypes = {
+  script: PropTypes.string,
+  updateScript: PropTypes.func.isRequired
+};
+
+function mapStateToProps(state) {
+  return { script: state.script };
+}
+
+const mapDispatchToProps = {
+  updateScript
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Content);
