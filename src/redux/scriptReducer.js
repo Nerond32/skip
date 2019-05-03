@@ -2,7 +2,7 @@ const initialState = {
   script: ""
 };
 
-function reducer(state = initialState, action) {
+function scriptReducer(state = initialState, action) {
   if (action.type === "UPDATE_SCRIPT") {
     return {
       ...state,
@@ -12,4 +12,4 @@ function reducer(state = initialState, action) {
   return state;
 }
 
-export default reducer;
+export default scriptReducer;
