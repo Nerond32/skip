@@ -63,7 +63,6 @@ class Content extends React.Component {
   render() {
     return (
       <div>
-        <h2>Settings</h2>
         <div className="content">
           {Object.entries(this.state.inputs).map(([key, value]) => (
             <Input
@@ -74,6 +73,7 @@ class Content extends React.Component {
               changedInputSelection={this.changedInputSelection}
             />
           ))}
+          <br />
           <GenerateButton generate={this.generate} />
           <Output text={this.props.script} />
           <DownloadButton download={this.download} />

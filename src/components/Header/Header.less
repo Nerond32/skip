@@ -1,10 +1,33 @@
-.header {
-    background-color: black;
-    color:lightblue;
-    height:50px;
-    margin:0px;
-    margin-bottom:20px;
-    padding:15px;
-    font-size:2em;
+@name:header;
+@mainColor:#282828;
+
+.@{name} {
+    background-color: @mainColor;
+    color:white;
+    border-top:6px solid black;
+    height:60px;
+    margin:0px 0px 1.2em 0px;
 }
 
+.@{name} > *{
+    display:inline-block;
+}
+
+.@{name}Title {
+    background-color:darken(@mainColor,5%);
+    font-size:2em;
+    font-weight:bold;
+    height:100%;
+    line-height:60px;
+    margin-right:0.3em;
+    width:3em;
+    text-align: center;
+    
+}
+
+.@{name}Details {
+    font-size:0.9em;
+    font-style: italic;
+    margin-bottom:0.6em;
+    vertical-align: bottom;
+}

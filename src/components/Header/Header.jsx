@@ -3,9 +3,12 @@ import "./Header.less";
 
 const Header = () => {
   return (
-    <h1 className="header">
-      Skip - the Windows After-Install Script Generator
-    </h1>
+    <div className="header">
+      <div className="headerTitle">SKIP</div>
+      <div className="headerDetails">
+        Windows after-install script generator
+      </div>
+    </div>
   );
 };
 
