@@ -5,8 +5,9 @@ import "./Input.less";
 const Input = ({ id, name, isChecked, changedInputSelection }) => {
   return (
     <div className="input">
-      {name}:
+      <div className="inputLabel">{name}:</div>
       <input
+        className="inputCheckbox"
         name={name}
         type="checkbox"
         id="yes"
