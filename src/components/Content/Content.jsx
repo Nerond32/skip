@@ -9,8 +9,8 @@ import GenerateButton from "./GenerateButton/GenerateButton";
 import DownloadButton from "./DownloadButton/DownloadButton";
 
 class Content extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.download = this.download.bind(this);
     this.generate = this.generate.bind(this);
     this.changedInputSelection = this.changedInputSelection.bind(this);
@@ -35,14 +35,14 @@ class Content extends React.Component {
 
   generate() {
     const inputValues = Object.values(this.state.inputs);
-    let tmpScript = inputValues.reduce(
-      (script, { isChecked, code }) =>
-        isChecked ? `${script + code}\n` : script,
-      `${preScript}\n`
-    );
-    tmpScript += postScript;
+    const script =
+      inputValues.reduce(
+        (prevCode, { isChecked, code }) =>
+          isChecked ? `${prevCode + code}\n` : prevCode,
+        `${preScript}\n`
+      ) + postScript;
     this.setState({
-      script: tmpScript
+      script
     });
   }
 
