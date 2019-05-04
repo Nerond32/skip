@@ -1,33 +1,31 @@
-$name:header;
-$mainColor:#282828;
+$name: header;
+$mainColor: #282828;
 
 header {
-    background-color: $mainColor;
-    color:white;
-    border-top:6px solid black;
-    height:60px;
-    margin:0px 0px 1.2em 0px;
-    .title {
-        background-color:darken($mainColor,5%);
-        font-size:2em;
-        font-weight:bold;
-        height:100%;
-        line-height:60px;
-        margin-right:0.3em;
-        width:3em;
-        text-align: center;
-        
-    }
-    
-    .details {
-        font-size:0.9em;
-        font-style: italic;
-        margin-bottom:0.6em;
-        vertical-align: bottom;
-    }    
+  background-color: $mainColor;
+  color: white;
+  border-top: 6px solid black;
+  height: 60px;
+  margin: 0px 0px 1.2em 0px;
+  .title {
+    background-color: darken($mainColor, 5%);
+    font-size: 2em;
+    font-weight: bold;
+    height: 100%;
+    line-height: 60px;
+    margin-right: 0.3em;
+    width: 3em;
+    text-align: center;
+  }
+
+  .details {
+    font-size: 0.9em;
+    font-style: italic;
+    margin-bottom: 0.6em;
+    vertical-align: bottom;
+  }
 }
 
-header > *{
-    display:inline-block;
+header > * {
+  display: inline-block;
 }
-
