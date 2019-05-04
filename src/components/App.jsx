@@ -1,6 +1,6 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import "./App.less";
+import "./App.scss";
 import Header from "./Header/Header";
 import Content from "./Content/Content";
 import Login from "./Login/Login";

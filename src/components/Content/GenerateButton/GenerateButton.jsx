@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./GenerateButton.less";
 
 const GenerateButton = ({ generate }) => {
   return (

@@ -1,13 +1,13 @@
-@mainColor:#282828;
-@debug: false;
+$mainColor:#282828;
+$debug: false;
 
-* when(@debug) {
+@if $debug{* {
   border: 2px solid green !important;
   padding: 3px !important;
-}
+}}
 
 body {
-  background-color: @mainColor;
+  background-color: $mainColor;
   color:white;
   font-family: sans-serif;
 }
