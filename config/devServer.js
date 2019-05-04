@@ -4,11 +4,13 @@ const merge = require("webpack-merge");
 
 const commonConfig = require("./webpack/webpack.common.js");
 const devConfig = require("./webpack/webpack.dev.js");
+
 const config = merge.smart(commonConfig, devConfig);
 const options = {
   contentBase: "./dist",
   hot: true,
-  host: "localhost"
+  host: "localhost",
+  historyApiFallback: true
 };
 
 webpackDevServer.addDevServerEntrypoints(config, options);
