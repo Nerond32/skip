@@ -3,12 +3,10 @@ import "./Header.less";
 
 const Header = () => {
   return (
-    <div className="header">
-      <div className="headerTitle">SKIP</div>
-      <div className="headerDetails">
-        Windows after-install script generator
-      </div>
-    </div>
+    <header>
+      <div className="title">SKIP</div>
+      <div className="details">Windows after-install script generator</div>
+    </header>
   );
 };
 
