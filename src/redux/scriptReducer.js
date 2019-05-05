@@ -1,13 +1,9 @@
-const initialState = {
-  script: ""
-};
+import { UPDATE_SCRIPT } from "./actions";
 
+const initialState = "";
 function scriptReducer(state = initialState, action) {
-  if (action.type === "UPDATE_SCRIPT") {
-    return {
-      ...state,
-      script: action.payload.script
-    };
+  if (action.type === UPDATE_SCRIPT) {
+    return action.payload.script;
   }
   return state;
 }

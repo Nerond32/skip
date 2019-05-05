@@ -1,5 +1,10 @@
-$mainColor: #282828;
+@import "variables";
 $debug: false;
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
 
 @if $debug {
   * {
@@ -9,7 +14,7 @@ $debug: false;
 }
 
 body {
-  background-color: $mainColor;
+  background-color: $primaryColor;
   color: white;
   font-family: sans-serif;
 }

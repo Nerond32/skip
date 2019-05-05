@@ -45,6 +45,16 @@ module.exports = {
         use: ["style-loader", "css-loader", "sass-loader"]
       },
       {
+        test: /\.scss$/,
+        use: {
+          loader: "sass-loader",
+          options: {
+            includePaths: [path.resolve(process.cwd(), "src/styles")],
+            sourceMap: true
+          }
+        }
+      },
+      {
         test: /\.(png|svg|jpg|gif)$/,
         use: ["file-loader"]
       }
