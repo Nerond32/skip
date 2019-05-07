@@ -1,0 +1,20 @@
+.darkTheme {
+  background-color: $primaryColorDarkTheme;
+  color: $textColorDarkTheme;
+  header {
+    background-color: $primaryColorDarkTheme;
+    .title {
+      background-color: lighten($primaryColorDarkTheme, 5%);
+    }
+  }
+  .content {
+    > button {
+      &:hover {
+        background-color: lighten($primaryColorDarkTheme, 15);
+      }
+    }
+    #output {
+      background-color: $secondaryColorDarkTheme;
+    }
+  }
+}

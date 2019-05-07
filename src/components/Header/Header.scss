@@ -3,8 +3,7 @@ $name: header;
 
 header {
   background-color: $primaryColor;
-  color: white;
-  border-top: 6px solid black;
+  border-top: 6px solid darken($secondaryColor, 50);
   height: 60px;
   margin: 0px 0px 1.2em 0px;
   .title {

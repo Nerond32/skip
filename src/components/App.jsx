@@ -7,13 +7,12 @@ import Content from "./Content/Content";
 import Login from "./Login/Login";
 
 const App = ({ darkMode }) => {
-  // console.log(darkMode);
   return (
-    <React.Fragment>
+    <div className={`mainApp ${  darkMode ? "" : "darkTheme"}`}>
       <Header />
       <Route exact path="/" component={Content} />
       <Route path="/login" component={Login} />
-    </React.Fragment>
+    </div>
   );
 };
 
