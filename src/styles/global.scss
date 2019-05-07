@@ -19,6 +19,11 @@ body {
   background-color: $primaryColor;
   color: $textColor;
   font-family: sans-serif;
+  button {
+    background-color: darken($primaryColor, 15);
+    border-color: $secondaryColor;
+    color: $textColor;
+  }
 }
 
 a {
