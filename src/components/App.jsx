@@ -2,7 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 import { Route } from "react-router-dom";
 import PropTypes from "prop-types";
-import "./App.scss";
 import Header from "./Header/Header";
 import Content from "./Content/Content";
 import Login from "./Login/Login";

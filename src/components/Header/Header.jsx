@@ -2,7 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import "./Header.scss";
 import DarkModeButton from "./DarkModeButton/DarkModeButton";
 import { changeDarkMode } from "../../redux/actions";
 

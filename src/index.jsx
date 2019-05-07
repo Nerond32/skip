@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import App from "./components/App";
 import store from "./redux/store";
 import "normalize.css";
+import "./styles/global.scss";
 
 const Root = () => (
   <Provider store={store}>
