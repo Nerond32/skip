@@ -7,7 +7,9 @@ header {
   height: 60px;
   margin: 0px 0px 1.2em 0px;
   .title {
-    background-color: darken($primaryColor, 5%);
+    background-color: darken($primaryColor, 12%);
+    border-bottom-right-radius: 60%;
+    color: darken($secondaryColor, 8%);
     font-size: 2em;
     font-weight: bold;
     height: 100%;

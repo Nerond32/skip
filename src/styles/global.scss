@@ -28,9 +28,10 @@ body {
   color: $textColor;
   font-family: sans-serif;
   button {
-    background-color: darken($primaryColor, 15);
-    border-color: $secondaryColor;
-    color: $textColor;
+    background-color: $primaryColor;
+    border: 0px;
+    border-bottom: 1px solid $secondaryColor;
+    border-radius: 0.2em;
   }
 }
 

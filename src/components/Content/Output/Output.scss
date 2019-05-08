@@ -1,6 +1,7 @@
 #output {
-  background-color: $secondaryColor;
-  color: $textColor;
+  background-color: lighten($primaryColor, 8);
+  border: 0px;
+  color: inherit;
   min-width: 600px;
   width: 60%;
   height: 1000px;

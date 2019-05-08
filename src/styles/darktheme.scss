@@ -2,15 +2,16 @@
   background-color: $primaryColorDarkTheme;
   color: $textColorDarkTheme;
   button {
-    background-color: lighten($primaryColorDarkTheme, 15);
+    background-color: $primaryColorDarkTheme;
     border-color: $secondaryColorDarkTheme;
     color: $textColorDarkTheme;
   }
   header {
     background-color: $primaryColorDarkTheme;
-    border-top-color: lighten($secondaryColorDarkTheme, 50);
+    border-top-color: black;
     .title {
       background-color: lighten($primaryColorDarkTheme, 5%);
+      color: lighten($secondaryColorDarkTheme, 5%);
     }
   }
   .content {
@@ -20,7 +21,13 @@
       }
     }
     #output {
-      background-color: $secondaryColorDarkTheme;
+      background-color: lighten($primaryColorDarkTheme, 10);
+    }
+  }
+  .darkThemeButton {
+    background-color: $secondaryColorDarkTheme;
+    &:hover {
+      background-color: $secondaryColor;
     }
   }
 }
