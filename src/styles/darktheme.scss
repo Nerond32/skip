@@ -1,6 +1,11 @@
 .darkTheme {
   background-color: $primaryColorDarkTheme;
   color: $textColorDarkTheme;
+  button {
+    background-color: lighten($primaryColorDarkTheme, 15);
+    border-color: $secondaryColorDarkTheme;
+    color: $textColorDarkTheme;
+  }
   header {
     background-color: $primaryColorDarkTheme;
     border-top-color: lighten($secondaryColorDarkTheme, 50);
@@ -17,10 +22,5 @@
     #output {
       background-color: $secondaryColorDarkTheme;
     }
-  }
-  button {
-    background-color: lighten($primaryColorDarkTheme, 15);
-    border-color: $secondaryColorDarkTheme;
-    color: $textColorDarkTheme;
   }
 }
