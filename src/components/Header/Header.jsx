@@ -22,9 +22,10 @@ class Header extends React.Component {
           {" "}
           <div className="title">SKIP</div>
         </Link>
-        <Link to="/login">
-          <div className="details">Windows after-install script generator</div>
-        </Link>
+        <div className="details">Windows after-install script generator</div>
+        <button type="button" onClick={() => this.props.auth.login()}>
+          LOGIN
+        </button>
         <DarkThemeButton onClick={this.changeDarkMode} />{" "}
       </header>
     );
@@ -32,7 +33,8 @@ class Header extends React.Component {
 }
 
 Header.propTypes = {
-  changeDarkMode: PropTypes.func.isRequired
+  changeDarkMode: PropTypes.func.isRequired,
+  auth: PropTypes.elementType.isRequired
 };
 
 const mapDispatchToProps = {

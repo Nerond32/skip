@@ -4,6 +4,9 @@ const CleanWebpackPlugin = require("clean-webpack-plugin");
 const Webpack = require("webpack");
 
 module.exports = {
+  node: {
+    fs: "empty"
+  },
   entry: {
     app: "./src/index.jsx"
   },
