@@ -6,6 +6,7 @@ import Header from "./Header/Header";
 import Content from "./Content/Content";
 import Login from "./Login/Login";
 import Auth from "../Auth/Auth";
+import Callback from "./Callback/Callback";
 
 class App extends React.Component {
   constructor({ darkMode, history }) {
@@ -18,10 +19,9 @@ class App extends React.Component {
       <div className={`mainApp ${this.props.darkMode ? "" : "darkTheme"}`}>
         <Header auth={this.auth} />
         <Route exact path="/" component={Content} />
-        <Route path="/callback" component={Content} />
         <Route
-          path="/login"
-          render={props => <Login {...props} auth={this.auth} />}
+          path="/callback"
+          render={props => <Callback {...props} auth={this.auth} />}
         />
       </div>
     );

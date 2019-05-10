@@ -7,8 +7,6 @@ import store from "./redux/store";
 import "normalize.css";
 import "./styles/global.scss";
 
-require("dotenv").config();
-
 const Root = () => (
   <Provider store={store}>
     <BrowserRouter>

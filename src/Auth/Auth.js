@@ -4,6 +4,9 @@ export default class Auth {
   constructor(history) {
     this.history = history;
     this.auth0 = new auth0.WebAuth({
+      clientID: process.env.AUTH0_CLIENT_ID,
+      domain: process.env.AUTH0_DOMAIN,
+      redirectUrl: process.env.AUTH0_CALLBACK,
       responseType: "token id_token",
       scope: "openid profile email"
     });
@@ -11,6 +14,7 @@ export default class Auth {
 
   handleAuthentication() {
     this.auth0.parseHash((err, authResult) => {
+      console.log(authResult);
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult);
         this.history.push("/");
@@ -22,7 +26,9 @@ export default class Auth {
     });
   }
 
-  setSession() {
+  // eslint-disable-next-line class-methods-use-this
+  setSession(authResult) {
+    console.log(authResult);
     const expiresAt = JSON.stringify(
       authResult.expiresIn * 1000 + new Date().getTime()
     );
