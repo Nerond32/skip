@@ -40,4 +40,21 @@ export default class Auth {
   login() {
     this.auth0.authorize();
   }
+
+  // eslint-disable-next-line class-methods-use-this
+  logout() {
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("id_token");
+    localStorage.removeItem("expires_at");
+    this.auth0.logout({
+      clientID: process.env.AUTH0_CLIENT_ID,
+      returnTo: "http:/localhost:5000/"
+    });
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  isAuthenticated() {
+    const expiresAt = JSON.parse(localStorage.getItem("expires_at"));
+    return new Date().getTime() < expiresAt;
+  }
 }

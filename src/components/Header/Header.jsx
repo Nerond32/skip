@@ -27,6 +27,9 @@ class Header extends React.Component {
         <button type="button" onClick={() => this.props.auth.login()}>
           LOGIN
         </button>
+        <button type="button" onClick={() => this.props.auth.logout()}>
+          LOGOUT
+        </button>
         <DarkThemeButton onClick={this.changeDarkMode} />{" "}
       </header>
     );
