@@ -18,6 +18,7 @@ class App extends React.Component {
       <div className={`mainApp ${this.props.darkMode ? "" : "darkTheme"}`}>
         <Header auth={this.auth} />
         <Route exact path="/" component={Content} />
+        <Route path="/callback" component={Content} />
         <Route
           path="/login"
           render={props => <Login {...props} auth={this.auth} />}
