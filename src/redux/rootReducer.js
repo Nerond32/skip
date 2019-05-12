@@ -1,8 +1,10 @@
 import { combineReducers } from "redux";
-import darkModeReducer from "./darkmodeReducer";
+import appReducer from "./appReducer";
 import scriptReducer from "./scriptReducer";
+import userReducer from "./userReducer";
 
 export default combineReducers({
-  darkMode: darkModeReducer,
-  script: scriptReducer
+  app: appReducer,
+  script: scriptReducer,
+  userData: userReducer
 });
