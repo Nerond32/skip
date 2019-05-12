@@ -4,7 +4,6 @@ import { Route, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import Header from "./Header/Header";
 import Content from "./Content/Content";
-import Login from "./Login/Login";
 import Auth from "../Auth/Auth";
 import Callback from "./Callback/Callback";
 
