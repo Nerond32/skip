@@ -60,7 +60,6 @@ class Content extends React.Component {
   }
 
   render() {
-    console.log(this.props.script);
     return (
       <div>
         <div className="content">

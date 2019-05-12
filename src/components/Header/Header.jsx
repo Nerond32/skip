@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import DarkThemeButton from "./DarkModeButton/DarkThemeButton";
 import { changeDarkMode } from "../../redux/actions";
-import Auth from "../../Auth/Auth";
+import Auth from "./Auth/Auth";
 
 class Header extends React.Component {
   constructor(props) {
@@ -24,12 +24,7 @@ class Header extends React.Component {
           <div className="title">SKIP</div>
         </Link>
         <div className="details">Windows after-install script generator</div>
-        <button type="button" onClick={() => this.props.auth.login()}>
-          LOGIN
-        </button>
-        <button type="button" onClick={() => this.props.auth.logout()}>
-          LOGOUT
-        </button>
+        <Auth />
         <DarkThemeButton onClick={this.changeDarkMode} />{" "}
       </header>
     );
@@ -37,8 +32,7 @@ class Header extends React.Component {
 }
 
 Header.propTypes = {
-  changeDarkMode: PropTypes.func.isRequired,
-  auth: PropTypes.instanceOf(Auth).isRequired
+  changeDarkMode: PropTypes.func.isRequired
 };
 
 const mapDispatchToProps = {
