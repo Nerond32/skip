@@ -1,4 +1,4 @@
-import { UPDATE_SCRIPT } from "./actions";
+import { UPDATE_SCRIPT } from "../actions";
 
 const initialState = "";
 function scriptReducer(state = initialState, action) {

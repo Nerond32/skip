@@ -1,4 +1,4 @@
-import { USER_LOGIN, USER_LOGOUT } from "./actions";
+import { USER_LOGIN, USER_LOGOUT } from "../actions";
 
 const initialState = {
   accessToken: true,

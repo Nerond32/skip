@@ -1,4 +1,4 @@
-import { CHANGE_DARK_MODE } from "./actions";
+import { CHANGE_DARK_MODE } from "../actions";
 
 const initialState = {
   darkMode: true
