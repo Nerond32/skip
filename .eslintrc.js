@@ -13,8 +13,10 @@ module.exports = {
     es6: true,
     node: true
   },
-  plugins: ["react", "prettier", "jsx-a11y"],
+  parser: "babel-eslint",
+  plugins: ["babel", "react", "prettier", "jsx-a11y"],
   rules: {
+    "babel/semi": 0,
     "react/prop-types": 2,
     "react/destructuring-assignment": 0
   }

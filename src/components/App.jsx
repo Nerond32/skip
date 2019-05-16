@@ -4,7 +4,6 @@ import { Route, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import Header from "./Header/Header";
 import Content from "./Content/Content";
-import Callback from "./Callback/Callback";
 
 class App extends React.Component {
   constructor({ history }) {
@@ -16,7 +15,6 @@ class App extends React.Component {
       <div className={`mainApp ${this.props.darkMode ? "" : "darkTheme"}`}>
         <Header />
         <Route exact path="/" component={Content} />
-        <Route path="/callback" render={props => <Callback {...props} />} />
       </div>
     );
   }
