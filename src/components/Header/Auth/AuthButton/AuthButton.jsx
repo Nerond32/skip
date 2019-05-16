@@ -1,7 +1,5 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { getIsAuthenticated } from "../../../../redux/selectors";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const AuthButton = ({ isAuthenticated, loginFun, logoutFun }) => {
   return (
@@ -10,7 +8,7 @@ const AuthButton = ({ isAuthenticated, loginFun, logoutFun }) => {
       type="button"
       onClick={isAuthenticated ? logoutFun : loginFun}
     >
-      {isAuthenticated ? "Logout" : "Login"}
+      {isAuthenticated ? 'Logout' : 'Login'}
     </button>
   );
 };
@@ -25,10 +23,4 @@ AuthButton.propTypes = {
   logoutFun: PropTypes.func.isRequired
 };
 
-function mapStateToProps(state) {
-  return {
-    isAuthenticated: getIsAuthenticated(state)
-  };
-}
-
-export default connect(mapStateToProps)(AuthButton);
+export default AuthButton;

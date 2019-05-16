@@ -1,23 +1,23 @@
-import { USER_LOGIN, USER_LOGOUT } from "../actions";
+import { USER_LOGIN, USER_LOGOUT } from '../actions';
 
 const initialState = {
-  accessToken: true,
-  authResult: "",
+  accessToken: '',
+  authResult: '',
   expiresAt: 0
 };
 function userReducer(state = initialState, action) {
   if (action.type === USER_LOGIN) {
     return {
       ...state,
-      access_token: action.accessToken,
-      authResult: action.authResult,
-      expiresAt: action.expiresAt
+      accessToken: action.payload.accessToken,
+      authResult: action.payload.authResult,
+      expiresAt: action.payload.expiresAt
     };
   }
   if (action.type === USER_LOGOUT) {
     return {
       ...state,
-      access_token: initialState.accessToken,
+      accessToken: initialState.accessToken,
       authResult: initialState.authResult,
       expiresAt: initialState.expiresAt
     };

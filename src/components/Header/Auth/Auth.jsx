@@ -1,10 +1,11 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import auth0 from "auth0-js";
-import { Route, withRouter } from "react-router-dom";
-import AuthButton from "./AuthButton/AuthButton";
-import { userLogin, userLogout } from "../../../redux/actions";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import auth0 from 'auth0-js';
+import { Route } from 'react-router-dom';
+import AuthButton from './AuthButton/AuthButton';
+import { userLogin, userLogout } from '../../../redux/actions';
+import { getIsAuthenticated } from '../../../redux/selectors';
 
 class Auth extends React.Component {
   constructor(props) {
@@ -15,8 +16,8 @@ class Auth extends React.Component {
       clientID: process.env.AUTH0_CLIENT_ID,
       domain: process.env.AUTH0_DOMAIN,
       redirectUrl: process.env.AUTH0_CALLBACK,
-      responseType: "token id_token",
-      scope: "openid profile email"
+      responseType: 'token id_token',
+      scope: 'openid profile email'
     });
     this.handleAuthentication = this.handleAuthentication.bind(this);
   }
@@ -28,42 +29,61 @@ class Auth extends React.Component {
     this.props.userLogin(authResult.accessToken, authResult.idToken, expiresAt);
   }
 
+  // handleAuthentication = () => {
+  //   this.auth0.parseHash((err, authResult) => {
+  //     if (authResult && authResult.accessToken && authResult.idToken) {
+  //       this.setSession(authResult);
+  //       this.props.history.push('/');
+  //     } else if (err) {
+  //       console.log(err);
+  //       this.props.history.push('/');
+  //     }
+  //   });
+  // };
+
   handleAuthentication = () => {
-    this.auth0.parseHash((err, authResult) => {
+    const hash = window.location.hash.substr(1);
+    const { state } = hash.split('&').reduce(function(result, item) {
+      const parts = item.split('=');
+      result[parts[0]] = parts[1];
+      return result;
+    }, {});
+    this.auth0.parseHash({ state, nonce: '1234' }, (err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult);
-        this.history.push("/");
+        this.props.history.push('/');
       } else if (err) {
-        this.history.push("/");
+        this.props.history.push('/');
       }
     });
   };
 
   login = () => {
-    this.auth0.authorize();
+    this.auth0.authorize({
+      nonce: '1234'
+    });
   };
 
   logout = () => {
     this.props.userLogout();
     this.auth0.logout({
       clientID: process.env.AUTH0_CLIENT_ID,
-      returnTo: "http:/localhost:5000/"
+      returnTo: 'http://localhost:5000/'
     });
   };
 
   authCallback = () => {
-    if (/access_token|id_token|error/.test(location.hash)) {
-      this.handleAuthentication();
-    } else {
-      throw new Error("Invalid callback URL");
-    }
-    return null;
+    this.handleAuthentication();
   };
 
   render() {
     return (
       <React.Fragment>
-        <AuthButton loginFun={this.login} logoutFun={this.logout} />
+        <AuthButton
+          loginFun={this.login}
+          logoutFun={this.logout}
+          isAuthenticated={this.props.isAuthenticated}
+        />
         <Route path="/callback" render={this.authCallback} />
       </React.Fragment>
     );
@@ -71,18 +91,23 @@ class Auth extends React.Component {
 }
 
 Auth.propTypes = {
+  isAuthenticated: PropTypes.bool.isRequired,
   userLogin: PropTypes.func.isRequired,
   userLogout: PropTypes.func.isRequired
 };
+
+function mapStateToProps(state) {
+  return {
+    isAuthenticated: getIsAuthenticated(state)
+  };
+}
 
 const mapDispatchToProps = {
   userLogin,
   userLogout
 };
 
-export default withRouter(
-  connect(
-    null,
-    mapDispatchToProps
-  )(Auth)
-);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Auth);

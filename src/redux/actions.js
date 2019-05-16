@@ -9,9 +9,9 @@ export const updateScript = script => ({
 export const changeDarkMode = () => ({
   type: CHANGE_DARK_MODE
 });
-export const userLogin = userData => ({
+export const userLogin = (accessToken, authResult, expiresAt) => ({
   type: USER_LOGIN,
-  payload: { userData }
+  payload: { accessToken, authResult, expiresAt }
 });
 export const userLogout = () => ({
   type: USER_LOGOUT
