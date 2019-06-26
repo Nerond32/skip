@@ -1,11 +1,11 @@
-@import "variables";
-@import "darktheme";
-@import "../components/App.scss";
-@import "../components/Content/Content.scss";
-@import "../components/Content/Input/Input.scss";
-@import "../components/Content/Output//Output.scss";
-@import "../components/Header/Header.scss";
-@import "../components/Header/DarkModeButton/DarkThemeButton.scss";
+@import 'variables';
+@import 'darktheme';
+@import '../components/App.scss';
+@import '../components/Content/Content.scss';
+@import '../components/Content/Input/Input.scss';
+@import '../components/Content/Output//Output.scss';
+@import '../components/Header/Header.scss';
+@import '../components/Assets/Button.scss';
 
 $debug: false;
 
@@ -27,12 +27,6 @@ body {
   background-color: $primaryColor;
   color: $textColor;
   font-family: sans-serif;
-  button {
-    background-color: $primaryColor;
-    border: 0px;
-    border-bottom: 1px solid $secondaryColor;
-    border-radius: 0.2em;
-  }
 }
 
 a {

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import auth0 from 'auth0-js';
 import { Route } from 'react-router-dom';
-import AuthButton from './AuthButton/AuthButton';
+import Button from '../../Assets/Button';
 import { userLogin, userLogout } from '../../../redux/actions';
 import { getIsAuthenticated } from '../../../redux/selectors';
 
@@ -79,11 +79,9 @@ class Auth extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <AuthButton
-          loginFun={this.login}
-          logoutFun={this.logout}
-          isAuthenticated={this.props.isAuthenticated}
-        />
+        <Button onClick={this.props.isAuthenticated ? this.login : this.logout}>
+          {this.props.isAuthenticated ? 'Logout' : 'Login'}
+        </Button>
         <Route path="/callback" render={this.authCallback} />
       </React.Fragment>
     );

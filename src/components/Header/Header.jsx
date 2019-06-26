@@ -2,9 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import DarkThemeButton from './DarkModeButton/DarkThemeButton';
 import { changeDarkMode } from '../../redux/actions';
 import Auth from './Auth/Auth';
+import Button from '../Assets/Button';
 
 class Header extends React.Component {
   constructor(props) {
@@ -25,7 +25,7 @@ class Header extends React.Component {
         </Link>
         <div className="details">Windows after-install script generator</div>
         <Auth history={this.props.history} location={this.props.location} />
-        <DarkThemeButton onClick={this.changeDarkMode} />{' '}
+        <Button className="dark-theme-button" onClick={this.changeDarkMode} />
       </header>
     );
   }

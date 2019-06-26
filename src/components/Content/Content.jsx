@@ -1,14 +1,13 @@
-import React from "react";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
-import data from "./data";
-import preScript from "./preScript";
-import postScript from "./postScript";
-import Input from "./Input/Input";
-import Output from "./Output/Output";
-import GenerateButton from "./GenerateButton/GenerateButton";
-import DownloadButton from "./DownloadButton/DownloadButton";
-import { updateScript } from "../../redux/actions";
+import React from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import data from './data';
+import preScript from './preScript';
+import postScript from './postScript';
+import Input from './Input/Input';
+import Output from './Output/Output';
+import { updateScript } from '../../redux/actions';
+import Button from '../Assets/Button';
 
 class Content extends React.Component {
   constructor(props) {
@@ -22,13 +21,13 @@ class Content extends React.Component {
   }
 
   download() {
-    const element = document.createElement("a");
+    const element = document.createElement('a');
     element.setAttribute(
-      "href",
+      'href',
       `data:text/plain;charset=utf-8,${encodeURIComponent(this.props.script)}`
     );
-    element.setAttribute("download", "startupScript.ps1");
-    element.style.display = "none";
+    element.setAttribute('download', 'startupScript.ps1');
+    element.style.display = 'none';
     document.body.appendChild(element);
     element.click();
     document.body.removeChild(element);
@@ -73,9 +72,9 @@ class Content extends React.Component {
             />
           ))}
           <br />
-          <GenerateButton generate={this.generate} />
+          <Button onClick={this.generate}>Generate</Button>
           <Output text={this.props.script} />
-          <DownloadButton download={this.download} />
+          <Button onClick={this.download}>Download</Button>
         </div>
       </div>
     );

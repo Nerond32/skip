@@ -1,4 +1,4 @@
-@import "variables";
+@import 'variables';
 $name: header;
 
 header {
@@ -24,6 +24,21 @@ header {
     font-style: italic;
     margin-bottom: 0.6em;
     vertical-align: bottom;
+  }
+
+  .dark-theme-button {
+    background: url(images/DarkThemeButtonImage.png) no-repeat;
+    background-color: $secondaryColor;
+    background-size: 100%, 100%;
+    border-radius: 1em;
+    height: 3em;
+    width: 3em;
+    margin: 0.2em;
+    position: absolute;
+    right: 0px;
+    &:hover {
+      background-color: $secondaryColorDarkTheme;
+    }
   }
 }
 

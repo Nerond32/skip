@@ -5,11 +5,7 @@ import PropTypes from 'prop-types';
 import Header from './Header/Header';
 import Content from './Content/Content';
 
-class App extends React.Component {
-  constructor({ history }) {
-    super();
-  }
-
+class App extends React.PureComponent {
   render() {
     return (
       <div className={`mainApp ${this.props.darkMode ? 'darkTheme' : ''}`}>
