@@ -9,7 +9,7 @@ class App extends React.PureComponent {
   render() {
     return (
       <div className={`mainApp ${this.props.darkMode ? 'darkTheme' : ''}`}>
-        <Header history={this.props.history} location={this.props.location} />
+        <Header history={this.props.history} />
         <Route exact path="/" component={Content} />
       </div>
     );
