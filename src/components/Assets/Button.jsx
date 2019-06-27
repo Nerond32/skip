@@ -10,11 +10,12 @@ const Button = ({ children, className, onClick }) => {
 };
 
 Button.defaultProps = {
+  children: '',
   className: ''
 };
 
 Button.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   className: PropTypes.string,
   onClick: PropTypes.func.isRequired
 };

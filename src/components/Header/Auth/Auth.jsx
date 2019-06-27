@@ -43,7 +43,7 @@ class Auth extends React.Component {
 
   handleAuthentication = () => {
     const hash = window.location.hash.substr(1);
-    const { state } = hash.split('&').reduce(function(result, item) {
+    const { state } = hash.split('&').reduce((result, item) => {
       const parts = item.split('=');
       result[parts[0]] = parts[1];
       return result;
@@ -79,7 +79,7 @@ class Auth extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Button onClick={this.props.isAuthenticated ? this.login : this.logout}>
+        <Button onClick={this.props.isAuthenticated ? this.logout : this.login}>
           {this.props.isAuthenticated ? 'Logout' : 'Login'}
         </Button>
         <Route path="/callback" render={this.authCallback} />

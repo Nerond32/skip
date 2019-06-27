@@ -20,7 +20,6 @@ class Header extends React.Component {
     return (
       <header>
         <Link to="/">
-          {' '}
           <div className="title">SKIP</div>
         </Link>
         <div className="details">Windows after-install script generator</div>
