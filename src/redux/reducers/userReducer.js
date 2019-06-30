@@ -2,7 +2,7 @@ import { USER_LOGIN, USER_LOGOUT } from '../actions';
 
 const initialState = {
   accessToken: '',
-  authResult: '',
+  idToken: '',
   expiresAt: 0
 };
 function userReducer(state = initialState, action) {
@@ -10,7 +10,7 @@ function userReducer(state = initialState, action) {
     return {
       ...state,
       accessToken: action.payload.accessToken,
-      authResult: action.payload.authResult,
+      idToken: action.payload.idToken,
       expiresAt: action.payload.expiresAt
     };
   }
@@ -18,7 +18,7 @@ function userReducer(state = initialState, action) {
     return {
       ...state,
       accessToken: initialState.accessToken,
-      authResult: initialState.authResult,
+      idToken: initialState.idToken,
       expiresAt: initialState.expiresAt
     };
   }

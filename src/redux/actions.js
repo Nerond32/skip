@@ -1,4 +1,4 @@
-import auth0js from 'auth0-js';
+import auth0 from '../components/services/Auth0Instance';
 
 export const UPDATE_SCRIPT = 'UPDATE_SCRIPT';
 export const CHANGE_DARK_MODE = 'CHANGE_DARK_MODE';
@@ -11,22 +11,15 @@ export const updateScript = script => ({
 export const changeDarkMode = () => ({
   type: CHANGE_DARK_MODE
 });
-export const loginUser = (accessToken, authResult, expiresAt) => ({
+export const loginUser = ({ accessToken, idToken, expiresAt }) => ({
   type: USER_LOGIN,
-  payload: { accessToken, authResult, expiresAt }
+  payload: { accessToken, idToken, expiresAt }
 });
 export const logoutUser = () => ({
   type: USER_LOGOUT
 });
 
 export const logout = () => {
-  const auth0 = new auth0js.WebAuth({
-    clientID: process.env.AUTH0_CLIENT_ID,
-    domain: process.env.AUTH0_DOMAIN,
-    redirectUrl: process.env.AUTH0_CALLBACK,
-    responseType: 'token id_token',
-    scope: 'openid profile email'
-  });
   auth0.logout({
     clientID: process.env.AUTH0_CLIENT_ID,
     returnTo: 'http://localhost:5000/'
@@ -36,14 +29,7 @@ export const logout = () => {
   };
 };
 
-export const login = () => {
-  const auth0 = new auth0js.WebAuth({
-    clientID: process.env.AUTH0_CLIENT_ID,
-    domain: process.env.AUTH0_DOMAIN,
-    redirectUrl: process.env.AUTH0_CALLBACK,
-    responseType: 'token id_token',
-    scope: 'openid profile email'
-  });
+export const login = history => {
   const hash = window.location.hash.substr(1);
   const { state } = hash.split('&').reduce((result, item) => {
     const parts = item.split('=');
@@ -57,8 +43,13 @@ export const login = () => {
           authResult.expiresIn * 1000 + new Date().getTime()
         );
         dispatch(
-          loginUser(authResult.accessToken, authResult.authResult, expiresAt)
+          loginUser({
+            accessToken: authResult.accessToken,
+            idToken: authResult.idToken,
+            expiresAt
+          })
         );
+        history.push('/');
       }
     });
   };
