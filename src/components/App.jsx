@@ -4,23 +4,20 @@ import { Route, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Header from './Header/Header';
 import Content from './Content/Content';
-import { login } from '../redux/actions';
+import * as actions from '../redux/actions';
 
-class App extends React.PureComponent {
-  authCallback = () => {
-    this.props.login(this.props.history);
+const App = ({ darkMode, history, login }) => {
+  const authCallback = () => {
+    login(history);
   };
-
-  render() {
-    return (
-      <div className={`mainApp ${this.props.darkMode ? 'darkTheme' : ''}`}>
-        <Header history={this.props.history} />
-        <Route exact path="/" component={Content} />
-        <Route path="/callback" render={this.authCallback} />
-      </div>
-    );
-  }
-}
+  return (
+    <div className={`mainApp ${darkMode ? 'darkTheme' : ''}`}>
+      <Header history={history} />
+      <Route exact path="/" component={Content} />
+      <Route path="/callback" render={authCallback} />
+    </div>
+  );
+};
 
 App.propTypes = {
   darkMode: PropTypes.bool.isRequired,
@@ -35,7 +32,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-  login
+  login: actions.login
 };
 
 export default withRouter(

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import data from './data';
@@ -6,46 +6,37 @@ import preScript from './preScript';
 import postScript from './postScript';
 import Input from './Input/Input';
 import Output from './Output/Output';
-import { updateScript } from '../../redux/actions';
+import * as actions from '../../redux/actions';
 import Button from '../Assets/Button';
 
-class Content extends React.Component {
-  constructor(props) {
-    super(props);
-    this.download = this.download.bind(this);
-    this.generate = this.generate.bind(this);
-    this.changedInputSelection = this.changedInputSelection.bind(this);
-    this.state = {
-      inputs: data
-    };
-  }
-
-  download() {
+const Content = ({ script, updateScript }) => {
+  const [inputs, setInputs] = useState(data);
+  const download = () => {
     const element = document.createElement('a');
     element.setAttribute(
       'href',
-      `data:text/plain;charset=utf-8,${encodeURIComponent(this.props.script)}`
+      `data:text/plain;charset=utf-8,${encodeURIComponent(script)}`
     );
     element.setAttribute('download', 'startupScript.ps1');
     element.style.display = 'none';
     document.body.appendChild(element);
     element.click();
     document.body.removeChild(element);
-  }
+  };
 
-  generate() {
-    const inputValues = Object.values(this.state.inputs);
-    const script =
+  const generate = () => {
+    const inputValues = Object.values(inputs);
+    const formattedScript =
       inputValues.reduce(
         (prevCode, { isChecked, code }) =>
           isChecked ? `${prevCode + code}\n` : prevCode,
         `${preScript}\n`
       ) + postScript;
-    this.props.updateScript(script);
-  }
+    updateScript(formattedScript);
+  };
 
-  changedInputSelection(name) {
-    this.setState(prevState => {
+  const changedInputSelection = name => {
+    setInputs(prevState => {
       return {
         inputs: {
           ...prevState.inputs,
@@ -56,30 +47,28 @@ class Content extends React.Component {
         }
       };
     });
-  }
+  };
 
-  render() {
-    return (
-      <div>
-        <div className="content">
-          {Object.entries(this.state.inputs).map(([key, value]) => (
-            <Input
-              key={key}
-              id={key}
-              name={value.name}
-              isChecked={value.isChecked}
-              changedInputSelection={this.changedInputSelection}
-            />
-          ))}
-          <br />
-          <Button onClick={this.generate}>Generate</Button>
-          <Output text={this.props.script} />
-          <Button onClick={this.download}>Download</Button>
-        </div>
+  return (
+    <div>
+      <div className="content">
+        {Object.entries(inputs).map(([key, value]) => (
+          <Input
+            key={key}
+            id={key}
+            name={value.name}
+            isChecked={value.isChecked}
+            changedInputSelection={changedInputSelection}
+          />
+        ))}
+        <br />
+        <Button onClick={generate}>Generate</Button>
+        <Output text={script} />
+        <Button onClick={download}>Download</Button>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 Content.defaultProps = {
   script: preScript + postScript
@@ -95,7 +84,7 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
-  updateScript
+  updateScript: actions.updateScript
 };
 
 export default connect(

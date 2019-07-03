@@ -1,38 +1,36 @@
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const CleanWebpackPlugin = require("clean-webpack-plugin");
-const Webpack = require("webpack");
-const dotenv = require("dotenv");
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const Webpack = require('webpack');
+const dotenv = require('dotenv');
 
 module.exports = () => {
   dotenv.config();
   return {
-    entry: {
-      app: "./src/index.jsx"
-    },
+    entry: ['react', 'react-dom', './src/index.jsx'],
     output: {
-      filename: "[name].bundle.js",
-      path: path.resolve(__dirname, "dist"),
-      publicPath: "/"
+      filename: '[name].bundle.js',
+      path: path.resolve(__dirname, 'dist'),
+      publicPath: '/'
     },
     plugins: [
       new HtmlWebpackPlugin({
-        template: "src/index.html",
-        title: "Output Management"
+        template: 'src/index.html',
+        title: 'Output Management'
       }),
       new Webpack.DefinePlugin({
-        "process.env": {
+        'process.env': {
           AUTH0_CLIENT_ID: JSON.stringify(process.env.AUTH0_CLIENT_ID),
           AUTH0_DOMAIN: JSON.stringify(process.env.AUTH0_DOMAIN),
           AUTH0_CALLBACK: JSON.stringify(process.env.AUTH0_CALLBACK)
         }
       }),
-      new CleanWebpackPlugin(["dist"]),
+      new CleanWebpackPlugin(['dist']),
       new Webpack.HotModuleReplacementPlugin()
     ],
-    devtool: "inline-source-map",
+    devtool: 'inline-source-map',
     resolve: {
-      extensions: [".js", ".jsx", ".less", ".css"]
+      extensions: ['.js', '.jsx', '.less', '.css']
     },
     module: {
       rules: [
@@ -40,36 +38,36 @@ module.exports = () => {
           test: /\.(js|jsx)?$/,
           exclude: /(node_modules)/,
           use: {
-            loader: "babel-loader"
+            loader: 'babel-loader'
           }
         },
         {
           test: /\.css$/,
-          use: ["style-loader", "css-loader"]
+          use: ['style-loader', 'css-loader']
         },
         {
           test: /\.scss$/,
-          use: ["style-loader", "css-loader", "sass-loader"]
+          use: ['style-loader', 'css-loader', 'sass-loader']
         },
         {
           test: /\.scss$/,
           use: {
-            loader: "sass-loader",
+            loader: 'sass-loader',
             options: {
-              includePaths: [path.resolve(process.cwd(), "src/styles")],
+              includePaths: [path.resolve(process.cwd(), 'src/styles')],
               sourceMap: true
             }
           }
         },
         {
           test: /\.(png|svg|jpg|gif)$/,
-          use: ["file-loader"]
+          use: ['file-loader']
         }
       ]
     },
     optimization: {
       splitChunks: {
-        chunks: "all"
+        chunks: 'all'
       }
     }
   };
